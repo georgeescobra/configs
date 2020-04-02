@@ -1,0 +1,10 @@
+colo slate
+set tabstop =4
+set number
+set mouse =a
+set backspace=indent,eol,start 
+set shiftwidth =4
+set expandtab
+set clipboard=unnamed
+syntax on
+
