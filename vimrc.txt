@@ -6,5 +6,7 @@ set backspace=indent,eol,start
 set shiftwidth =4
 set expandtab
 set clipboard=unnamed
+set cursorline
+colorscheme industry
 syntax on
 
