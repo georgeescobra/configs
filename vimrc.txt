@@ -7,6 +7,11 @@ set shiftwidth =4
 set expandtab
 set clipboard=unnamed
 set cursorline
+set relativenumber
+set noswapfile
+set nowrap
+set incsearch
+set noerrorbells
 colorscheme industry
 syntax on
 
