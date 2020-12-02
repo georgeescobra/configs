@@ -38,6 +38,11 @@ hi Type ctermfg=134
 hi Function ctermfg=220
 hi cCustomClassName ctermfg=203
 
+" remembers the last line the cursor was on
+if has("autocmd")
+      au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
+endif
+
 " CUSTOM KEY BINDS
     " PANE MOVEMENT
     nnoremap <silent> <Tab>s :vs<CR>
@@ -70,6 +75,7 @@ hi cCustomClassName ctermfg=203
     nnoremap <Space>n <c-e>
     nnoremap <Space>b <c-y>
     nnoremap <Space>m <s-M>
+    nnoremap <Space>, zz
 
 
     nnoremap n ^
