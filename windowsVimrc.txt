@@ -25,6 +25,7 @@ filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
     Plugin 'octol/vim-cpp-enhanced-highlight'
+    Plugin 'ludovicchabant/vim-gutentags'
 call vundle#end()  
 filetype plugin indent on 
 
@@ -51,17 +52,21 @@ endif
     nnoremap <silent> <Tab>l :wincmd l<CR>
     nnoremap <silent> <Tab>j :wincmd j<CR>
     nnoremap <silent> <Tab>k :wincmd k<CR>
+
+    nnoremap <silent> <Tab>] <c-]>
+    nnoremap <silent> <Tab>[ <c-o>
+
     " writes all the panes
     nnoremap <silent> <Tab>wa :wa<CR>
     nnoremap <silent> <Tab>w :w<CR>
     nnoremap <silent> <Tab>q :q<CR>
+    nnoremap <silent> <Tab>1 :q!<CR>
     " This is to go to last line you working on
     nnoremap <silent> <Space>t `" 
     nnoremap <silent> <Tab>m :!make
     nnoremap <Tab>1 :!
 
     nnoremap <Tab>e :edit 
-
     " Easier Movement Just replacing tab with shift
     nnoremap <Space>j <c-D>
     nnoremap <Space>k <c-U>
@@ -74,12 +79,13 @@ endif
     " Centers cursor middle
     nnoremap <Space>n <c-e>
     nnoremap <Space>b <c-y>
-    nnoremap <Space>m <s-M>
-    nnoremap <Space>, zz
-
+    nnoremap <Space>i <s-M>
+    nnoremap <Space>o zz
 
     nnoremap n ^
-    nnoremap <S-n> g_
+    nnoremap m g_
+
+    vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
 
 " INERT MODE 
 let &t_SI = "\e[6 q"
