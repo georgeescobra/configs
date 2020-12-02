@@ -1,3 +1,4 @@
+" FOR MAC/UNIX
 set number
 set mouse =a
 set backspace=indent,eol,start 
