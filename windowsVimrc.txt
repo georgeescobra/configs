@@ -14,18 +14,21 @@ set incsearch
 set noerrorbells
 set laststatus=2
 set wrap
-set noshowmode
+set showmode
+set smartindent
+set autoindent
 syntax on
-
 
 " installing vim plugin: 
 "  git clone https://github.com/VundleVim/Vundle.vim.git && ~/.vim/bundle/Vundle.vim  
 " :PluginInstall 
 filetype off 
 set rtp+=~/.vim/bundle/Vundle.vim
+set rtp+=~/.vim/bundle/fzf
 call vundle#begin()
     Plugin 'octol/vim-cpp-enhanced-highlight'
     Plugin 'ludovicchabant/vim-gutentags'
+    Plugin 'junegunn/fzf'
 call vundle#end()  
 filetype plugin indent on 
 
@@ -53,8 +56,7 @@ endif
     nnoremap <silent> <Tab>j :wincmd j<CR>
     nnoremap <silent> <Tab>k :wincmd k<CR>
 
-    nnoremap <silent> <Tab>] <c-]>
-    nnoremap <silent> <Tab>[ <c-o>
+    nnoremap <silent> <Tab>f :FZF<CR>
 
     " writes all the panes
     nnoremap <silent> <Tab>wa :wa<CR>
@@ -63,8 +65,8 @@ endif
     nnoremap <silent> <Tab>1 :q!<CR>
     " This is to go to last line you working on
     nnoremap <silent> <Space>t `" 
-    nnoremap <silent> <Tab>m :!make
-    nnoremap <Tab>1 :!
+    nnoremap <silent> <CR>m :!make
+    nnoremap <CR>1 :!
 
     nnoremap <Tab>e :edit 
     " Easier Movement Just replacing tab with shift
@@ -75,17 +77,32 @@ endif
     nnoremap <Space>h <S-h>
     nnoremap <Space>l <S-l>
 
+    nnoremap <Space>f <c-f>
+    nnoremap <Space>d <c-b>
+
+
+
     " Moves screen down, up 1
     " Centers cursor middle
     nnoremap <Space>n <c-e>
     nnoremap <Space>b <c-y>
-    nnoremap <Space>i <s-M>
-    nnoremap <Space>o zz
+    nnoremap <Space>m <s-M>
+    nnoremap <silent> <SPACE><SPACE> zz
 
     nnoremap n ^
-    nnoremap m g_
-
+    nnoremap N g_
+    
+    " to be able to search for highlighted words
     vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
+
+    " New way to escape 
+    inoremap <silent> <CR> <c-[>
+    vnoremap <silent> <CR> <c-[>
+
+    nnoremap <CR>o 3o<esc>2ka
+    nnoremap <CR>p 3O<esc>a
+
+
 
 " INERT MODE 
 let &t_SI = "\e[6 q"
