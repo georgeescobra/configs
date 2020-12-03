@@ -49,8 +49,8 @@ endif
 
 " CUSTOM KEY BINDS
     " PANE MOVEMENT
-    nnoremap <silent> <Tab>s :vs<CR>
-    nnoremap <silent> <Tab>d :sp<CR>
+    nnoremap <silent> <Tab>s :vs<CR>:wincmd l<CR>
+    nnoremap <silent> <Tab>d :sp<CR>:wincmd k<CR>
     nnoremap <silent> <Tab>h :wincmd h<CR>
     nnoremap <silent> <Tab>l :wincmd l<CR>
     nnoremap <silent> <Tab>j :wincmd j<CR>
@@ -72,6 +72,13 @@ endif
     " Easier Movement Just replacing tab with shift
     nnoremap <Space>j <c-D>
     nnoremap <Space>k <c-U>
+
+    " Moving between buffers
+    " Moving between ctags
+    nnoremap <Tab>] <c-]>
+    nnoremap <Tab>[ <c-[>
+    nnoremap <silent> - :bp<CR>
+    nnoremap <silent> = :bn<CR>
 
     " Goes to top, bottom of screen
     nnoremap <Space>h <S-h>
