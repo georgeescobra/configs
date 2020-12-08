@@ -1,22 +1,25 @@
 " VIMRC FOR MY UBUNTU IN WINDOWS
+set nocompatible
 set number
 set mouse =a
 set backspace=indent,eol,start 
 set shiftwidth =4
 set tabstop =4
+set softtabstop=4
 set expandtab
 set clipboard=unnamed
-set cursorline
 set relativenumber
 set noswapfile
 set nowrap
-set incsearch
 set noerrorbells
 set laststatus=2
 set wrap
 set showmode
 set smartindent
 set autoindent
+set incsearch
+set hlsearch
+set cursorline
 syntax on
 
 " installing vim plugin: 
@@ -25,22 +28,27 @@ syntax on
 filetype off 
 set rtp+=~/.vim/bundle/Vundle.vim
 set rtp+=~/.vim/bundle/fzf
+set completeopt-=preview
 call vundle#begin()
-    Plugin 'octol/vim-cpp-enhanced-highlight'
+"    Plugin 'octol/vim-cpp-enhanced-highlight'
     Plugin 'ludovicchabant/vim-gutentags'
     Plugin 'junegunn/fzf'
+    Plugin 'Valloric/YouCompleteMe'
 call vundle#end()  
 filetype plugin indent on 
 
 " syntax highlighting custom colors
+" enchaned highlighting needs to be opened
 hi Comment ctermfg=238
 hi LineNr ctermfg=white
-hi PreProc ctermfg=blue
+hi PreProc ctermfg=green
 hi String ctermfg=107
 hi Statement ctermfg=51
 hi Type ctermfg=134
 hi Function ctermfg=220
 hi cCustomClassName ctermfg=203
+hi clear CursorLine
+hi CursorLine ctermfg=None ctermbg=234
 
 " remembers the last line the cursor was on
 if has("autocmd")
@@ -65,7 +73,8 @@ endif
     nnoremap <silent> <Tab>1 :q!<CR>
     " This is to go to last line you working on
     nnoremap <silent> <Space>t `" 
-    nnoremap <silent> <CR>m :!make
+    nnoremap <silent> <CR>m :w<CR>:!printf "\e[1;31m\t~~~~~~~~~~~~~new compile~~~~~~~~~~~~~\n\e[0m" && make && ./main<CR>
+    nnoremap <silent> <CR>p :w<CR>:!printf "\e[1;31m\t~~~~~~~~~~~~~new compile~~~~~~~~~~~~~\n\e[0m" && python3 %
     nnoremap <CR>1 :!
 
     nnoremap <Tab>e :edit 
@@ -77,8 +86,9 @@ endif
     " Moving between ctags
     nnoremap <Tab>] <c-]>
     nnoremap <Tab>[ <c-[>
-    nnoremap <silent> - :bp<CR>
-    nnoremap <silent> = :bn<CR>
+
+    nnoremap <c-m> ma
+    nnoremap <c-n> `a
 
     " Goes to top, bottom of screen
     nnoremap <Space>h <S-h>
@@ -86,7 +96,6 @@ endif
 
     nnoremap <Space>f <c-f>
     nnoremap <Space>d <c-b>
-
 
 
     " Moves screen down, up 1
@@ -98,16 +107,23 @@ endif
 
     nnoremap n ^
     nnoremap N g_
-    
+
+
     " to be able to search for highlighted words
     vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
 
     " New way to escape 
-    inoremap <silent> <CR> <c-[>
-    vnoremap <silent> <CR> <c-[>
+    inoremap <silent> <c-J> <c-[>
+    vnoremap <silent> <c-J> <c-[>
 
-    nnoremap <CR>o 3o<esc>2ka
-    nnoremap <CR>p 3O<esc>a
+    nnoremap <silent> <c-x> d$
+
+    " To resize window
+    nnoremap <silent> <Tab>- :resize -5<CR>
+    nnoremap <silent> <Tab>= :resize +5<CR>
+
+    nnoremap <silent> - :vertical resize -5<CR>
+    nnoremap <silent> = :vertical resize +5<CR>
 
 
 
