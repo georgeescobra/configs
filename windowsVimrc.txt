@@ -66,17 +66,16 @@ endif
     nnoremap <silent> <C-j>f :FZF<CR>
 
     " writes all the panes
-    nnoremap <silent> <C-j>wa :wa<CR>
+    nnoremap <silent> <C-j>a :wa<CR>
     nnoremap <silent> <C-j>w :w<CR>
     nnoremap <silent> <C-j>q :q<CR>
-    nnoremap <silent> <C-j>1 :q!<CR>
+    nnoremap <silent> <C-j>e :wq<CR>
     " This is to go to last line you working on
     nnoremap <silent> <Space>t `" 
     nnoremap <silent> <CR>m :w<CR>:!printf "\e[1;31m\t~~~~~~~~~~~~~new compile~~~~~~~~~~~~~\n\e[0m" && make && ./main<CR>
     nnoremap <silent> <CR>p :w<CR>:!printf "\e[1;31m\t~~~~~~~~~~~~~new compile~~~~~~~~~~~~~\n\e[0m" && python3 %
     nnoremap <CR>1 :!
 
-    nnoremap <C-j>e :edit 
     " Easier Movement Just replacing tab with shift
     nnoremap <Space>j <c-D>
     nnoremap <Space>k <c-U>
@@ -118,8 +117,8 @@ endif
     nnoremap <silent> <c-x> d$
 
     " To resize window
-    nnoremap <silent> <Tab>- :resize -5<CR>
-    nnoremap <silent> <Tab>= :resize +5<CR>
+    nnoremap <silent> <C-j>- :resize -5<CR>
+    nnoremap <silent> <C-j>= :resize +5<CR>
 
     nnoremap <silent> - :vertical resize -5<CR>
     nnoremap <silent> = :vertical resize +5<CR>
