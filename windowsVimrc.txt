@@ -30,10 +30,10 @@ set rtp+=~/.vim/bundle/Vundle.vim
 set rtp+=~/.vim/bundle/fzf
 set completeopt-=preview
 call vundle#begin()
-"    Plugin 'octol/vim-cpp-enhanced-highlight'
+    Plugin 'octol/vim-cpp-enhanced-highlight'
     Plugin 'ludovicchabant/vim-gutentags'
-    Plugin 'junegunn/fzf'
-    Plugin 'Valloric/YouCompleteMe'
+"    Plugin 'junegunn/fzf'
+"    Plugin 'Valloric/YouCompleteMe'
 call vundle#end()  
 filetype plugin indent on 
 
@@ -54,30 +54,29 @@ hi CursorLine ctermfg=None ctermbg=234
 if has("autocmd")
       au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
 endif
-
 " CUSTOM KEY BINDS
-    " PANE MOVEMENT
-    nnoremap <silent> <Tab>s :vs<CR>:wincmd l<CR>
-    nnoremap <silent> <Tab>d :sp<CR>:wincmd k<CR>
-    nnoremap <silent> <Tab>h :wincmd h<CR>
-    nnoremap <silent> <Tab>l :wincmd l<CR>
-    nnoremap <silent> <Tab>j :wincmd j<CR>
-    nnoremap <silent> <Tab>k :wincmd k<CR>
+    " PANE MOVEMEN
+    nnoremap <silent> <C-j>s :vs<CR>:wincmd l<CR>
+    nnoremap <silent> <C-j>d :sp<CR>:wincmd k<CR>
+    nnoremap <silent> <C-j>h :wincmd h<CR>
+    nnoremap <silent> <C-j>l :wincmd l<CR>
+    nnoremap <silent> <C-j>j :wincmd j<CR>
+    nnoremap <silent> <C-j>k :wincmd k<CR>
 
-    nnoremap <silent> <Tab>f :FZF<CR>
+    nnoremap <silent> <C-j>f :FZF<CR>
 
     " writes all the panes
-    nnoremap <silent> <Tab>wa :wa<CR>
-    nnoremap <silent> <Tab>w :w<CR>
-    nnoremap <silent> <Tab>q :q<CR>
-    nnoremap <silent> <Tab>1 :q!<CR>
+    nnoremap <silent> <C-j>wa :wa<CR>
+    nnoremap <silent> <C-j>w :w<CR>
+    nnoremap <silent> <C-j>q :q<CR>
+    nnoremap <silent> <C-j>1 :q!<CR>
     " This is to go to last line you working on
     nnoremap <silent> <Space>t `" 
     nnoremap <silent> <CR>m :w<CR>:!printf "\e[1;31m\t~~~~~~~~~~~~~new compile~~~~~~~~~~~~~\n\e[0m" && make && ./main<CR>
     nnoremap <silent> <CR>p :w<CR>:!printf "\e[1;31m\t~~~~~~~~~~~~~new compile~~~~~~~~~~~~~\n\e[0m" && python3 %
     nnoremap <CR>1 :!
 
-    nnoremap <Tab>e :edit 
+    nnoremap <C-j>e :edit 
     " Easier Movement Just replacing tab with shift
     nnoremap <Space>j <c-D>
     nnoremap <Space>k <c-U>
