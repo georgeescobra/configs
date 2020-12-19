@@ -31,9 +31,7 @@ set rtp+=~/.vim/bundle/fzf
 set completeopt-=preview
 call vundle#begin()
     Plugin 'octol/vim-cpp-enhanced-highlight'
-    Plugin 'ludovicchabant/vim-gutentags'
-"    Plugin 'junegunn/fzf'
-"    Plugin 'Valloric/YouCompleteMe'
+    Plugin 'junegunn/fzf'
 call vundle#end()  
 filetype plugin indent on 
 
@@ -52,7 +50,7 @@ hi CursorLine ctermfg=None ctermbg=234
 
 " remembers the last line the cursor was on
 if has("autocmd")
-      au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
+      au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal! g`\"zz" | endif
 endif
 " CUSTOM KEY BINDS
     " PANE MOVEMEN
@@ -63,13 +61,14 @@ endif
     nnoremap <silent> <C-j> :wincmd j<CR>
     nnoremap <silent> <C-k> :wincmd k<CR>
 
-    nnoremap <silent> <C-j>f :FZF<CR>
+    " fuzzy finder
+    nnoremap <silent> <Tab>f :FZF<CR>
 
     " writes all the panes
-    nnoremap <silent> <C-j>a :wa<CR>
-    nnoremap <silent> <C-j>w :w<CR>
-    nnoremap <silent> <C-j>q :q<CR>
-    nnoremap <silent> <C-j>e :wq<CR>
+    nnoremap <silent> <C-a> :wa<CR>
+    nnoremap <silent> <C-w> :w<CR>
+    nnoremap <silent> <C-c> :q!<CR>
+    nnoremap <silent> <C-e> :wq<CR>
 
     nnoremap <silent> <CR>m :w<CR>:!printf "\e[1;31m\t~~~~~~~~~~~~~new compile~~~~~~~~~~~~~\n\e[0m" && make && ./main<CR>
     nnoremap <silent> <CR>p :w<CR>:!printf "\e[1;31m\t~~~~~~~~~~~~~new compile~~~~~~~~~~~~~\n\e[0m" && python3 %
@@ -90,7 +89,6 @@ endif
     nnoremap <Space>f <c-f>
     nnoremap <Space>d <c-b>
 
-
     " Moves screen down, up 1
     " Centers cursor middle
     nnoremap <c-m> <c-e>
@@ -100,7 +98,6 @@ endif
 
     nnoremap n ^
     nnoremap N g_
-
 
     " to be able to search for highlighted words
     vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
