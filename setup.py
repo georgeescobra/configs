@@ -16,11 +16,31 @@ def update():
     orig = os.getcwd()
     os.chdir(orig)
     diff = os.popen("git diff").read()
-    print(diff)
-    #os.system("git add .")
-    #os.system("git commit -m 'another update'")
-    #os.system("git push")
-    #os.chdir(orig)
+    if diff:
+        from datetime import datetime
+        now = datetime.now()
+        date = now.strftime("%d/%m/%Y %H:%M:%S")
+        changes = os.popen("git status").read()
+        changes = changes.split('\n')
+        nameOfFiles = ["Updated: "]
+        untrackedFiles = False
+        for line in changes:
+            if "Untracked" in line: 
+                untrackedFiles = True
+            if untrackedFiles and len(line.split()) == 1:
+                line = line.split()
+                nameOfFiles.append(line[0])   
+            if "modified:" in line:
+                line = line.split()
+                nameOfFiles.append(line[1])
+        newMessage = ' '.join(nameOfFiles)
+        newMessage += ' on ' + date
+        commit = f"git commit -m \'{newMessage}\'"
+        os.system("git add .")
+        os.system(commit)
+        os.system("git push")
+    else:
+        print("No differences since last update")
 
 def install():
     """ copies necessary files from . to ~/"""
