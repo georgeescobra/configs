@@ -7,15 +7,24 @@ needs python3.8 at least
 # i am not sure whether or not i will need to know the opeprating system
 # this is going to be mostly bash (linux/unix)
 """
-HOME = os.path.expanduser("~")
+HOME = os.path.expanduser("~") # home directory no trailing / 
+CACHEDIR = os.getcwd() + '/cache'
+IGNORE = ['sublime.txt'] # ignoring certain config files
 
 def update():
     """ copies necessary files from ~/ to . 
         Then pushes to github automatically
     """
-    os.system(f"cp {HOME}/.vimrc {HOME}/configs/vimrc.txt")
-    os.system(f"cp {HOME}/.tmux.conf {HOME}/configs/tmux.conf")
-    os.system(f"cp {HOME}/.bashrc {HOME}/configs/bashrc.txt")
+    cwd = os.getcwd()
+    listOfFiles = os.listdir(cwd)
+    for nameOfFile in listOfFiles:
+        if nameOfFile not in IGNORE and '.txt' in nameOfFile:
+            nameOfFile = nameOfFile.rstrip('.txt')
+            fileAtHome = f'{HOME}/.{nameOfFile}'
+            fileAtCWD = f'{cwd}/{nameOfFile}'
+            if os.path.isfile(fileAtHome): 
+                os.system(f"cp {fileAtHome} {fileAtCWD}.txt ")
+                os.system(f"cp {fileAtHome} {CACHEDIR}/{nameOfFile}.txt")
     orig = os.getcwd()
     os.chdir(orig)
     diff = os.popen("git diff").read()
@@ -48,15 +57,24 @@ def update():
 
 def install():
     """ copies necessary files from . to ~/
-        If cache exists then install already happened
     """
-    cacheDir = os.getcwd() + '/cache'
-    cwd = os.getcwd()
-    os.mkdir(cacheDir)
+    cwd = os.getcwd() # has no trailing /
+    print(cwd)
+    os.mkdir(CACHEDIR)
     listOfFiles = os.listdir(cwd)
-    print(listOfFiles)
+    count = 1
+    for nameOfFile in listOfFiles:
+        if nameOfFile not in IGNORE and '.txt' in nameOfFile:
+            nameOfFile = nameOfFile.rstrip('.txt')
+            fileAtHome = f'{HOME}/.{nameOfFile}'
+            fileAtCWD = f'{cwd}/{nameOfFile}'
+            if os.path.isfile(fileAtHome):
+                os.system(f"cp {fileAtHome} {CACHEDIR}/{nameOfFile}.txt")
+                print(f"{count}: copied last version of {nameOfFile} to {CACHEDIR}")
+            os.system(f"cp {fileAtCWD}.txt {fileAtHome}")
+            count += 1
 
-    
+    print(f"COPIED {count-1} FILES")
     if os.path.isdir(cacheDir) and not len(os.listdir(cacheDir)): 
         print("NO BASE CONFIGS FOUND DELETING CACHE")
         os.rmdir(cacheDir)
