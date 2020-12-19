@@ -47,7 +47,7 @@ def update():
                 line = line.split()
                 nameOfFiles.append(line[1])
         print(f"{len(nameOfFiles)-1} FILE{'S' if len(nameOfFiles)-1 > 1 else ''} CHANGED")
-        if len(nameOfFiles)-1 > 1:
+        if len(nameOfFiles)-1 > 0:
             print("Files Changed:")
             for name in nameOfFiles:
                 if name != "Updated: ": print(f"\t{name}") 
@@ -106,9 +106,6 @@ def reset():
             fileAtHome = f'{HOME}/.{fileName}'
             if not os.system(f"cp {CACHEDIR}/{fileName}.txt {fileAtHome}"):
                 print(f"Reset {fileAtHome} with {CACHEDIR}/{fileName}")
-
-
-
 
 flags = {
     'update' : update,
