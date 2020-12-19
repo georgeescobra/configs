@@ -23,7 +23,6 @@ def update():
             fileAtCWD = f'{cwd}/{nameOfFile}'
             if os.path.isfile(fileAtHome): 
                 os.system(f"cp {fileAtHome} {fileAtCWD}.txt ")
-                os.system(f"cp {fileAtHome} {CACHEDIR}/{nameOfFile}.txt")
 
     orig = os.getcwd()
     os.chdir(orig)

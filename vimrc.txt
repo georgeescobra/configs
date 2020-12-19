@@ -107,7 +107,6 @@ endif
     inoremap <silent> <c-j> <c-[>
     vnoremap <silent> <c-j> <c-[>
 
-
     nnoremap <silent> <c-x> d$
 
     " To resize window
