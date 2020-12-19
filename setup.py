@@ -24,20 +24,22 @@ def update():
         changes = changes.split('\n')
         nameOfFiles = ["Updated: "]
         untrackedFiles = False
+        deletedFiles = False
         for line in changes:
             if "Untracked" in line: 
                 untrackedFiles = True
             if untrackedFiles and len(line.split()) == 1:
                 line = line.split()
                 nameOfFiles.append(line[0])   
-            if "modified:" in line:
+            if "modified:" in line or "deleted:" in line:
+                print(line)
                 line = line.split()
                 nameOfFiles.append(line[1])
+               
         newMessage = ' '.join(nameOfFiles)
         newMessage += ' on ' + date
-        commit = f"git commit -m \'{newMessage}\'"
         os.system("git add .")
-        os.system(commit)
+        os.system(f"git commit -m \'{newMessage}\'")
         os.system("git push")
     else:
         print("No differences since last update")
