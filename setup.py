@@ -46,7 +46,7 @@ def update():
             if "modified:" in line or "deleted:" in line:
                 line = line.split()
                 nameOfFiles.append(line[1])
-        print(f"{len(nameOfFiles)-1} FILE{'S' if len(nameOfFiles)-1 > 2 else ''} CHANGED")
+        print(f"{len(nameOfFiles)-1} FILE{'S' if len(nameOfFiles)-1 > 1 else ''} CHANGED")
         if len(nameOfFiles)-1 > 1:
             print("Files Changed:")
             for name in nameOfFiles:
@@ -93,12 +93,22 @@ def install():
         os.rmdir(cacheDir)
 
 def reset():
-    """ resets to original files from cache
+    """ resets to last version of the file from cache
+        ADD FLAH TO EXCLUIDE CERTAIN FILES
     """
-    cacheDir = os.getcwd() + '/cache'
-    os.system(f"cp ./vimrc.txt {HOME}/.vimrc")
-    os.system(f"cp ./tmux.conf {HOME}/.tmux.conf")
-    os.system(f"cp ./bashrc.txt {HOME}/.bashrc") 
+    if not os.path.isdir(CACHEDIR):
+        print("NO CACHE TO RESET FROM TRY GIT PULL AND --INSTALL")
+    else:
+        listOfFiles = os.listdir(CACHEDIR)
+        print(listOfFiles)
+        for fileName in listOfFiles:
+            fileName = fileName.rstrip('.txt')
+            fileAtHome = f'{HOME}/.{fileName}'
+            if not os.system(f"cp {CACHEDIR}/{fileName}.txt {fileAtHome}"):
+                print(f"Reset {fileAtHome} with {CACHEDIR}/{fileName}")
+
+
+
 
 flags = {
     'update' : update,
