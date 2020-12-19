@@ -3,9 +3,8 @@ import sys
 """
 this assumes that the config files are located in home directory ~
 needs python3.8 at least
-# need to be able to setup the config
-# i am not sure whether or not i will need to know the opeprating system
-# this is going to be mostly bash (linux/unix)
+TODO:
+    need to handle reset
 """
 HOME = os.path.expanduser("~") # home directory no trailing / 
 CACHEDIR = os.getcwd() + '/cache'
@@ -47,9 +46,14 @@ def update():
             if "modified:" in line or "deleted:" in line:
                 line = line.split()
                 nameOfFiles.append(line[1])
-        print(f"{len(nameOfFiles)-1} FILE{'S' if len(nameOfFiles)-1 > 1 else ''} CHANGED\n")
+        print(f"{len(nameOfFiles)-1} FILE{'S' if len(nameOfFiles)-1 > 1 else ''} CHANGED")
+        if len(nameOfFiles)-1 > 0:
+            print("Files Changed:")
+            for name in nameOfFiles:
+                print(f"\t{name}") 
         newMessage = ' '.join(nameOfFiles)
         newMessage += ' on ' + date
+        print()
         os.system("git add .")
         os.system(f"git commit -m \'{newMessage}\'")
         os.system("git push")
