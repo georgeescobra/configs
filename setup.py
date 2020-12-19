@@ -48,12 +48,12 @@ def update():
                 line = line.split()
                 nameOfFiles.append(line[1])
                
+        print(f"\n{len(nameOfFiles)} file{'s' if len(nameOfFiles) > 0 else ''} CHANGED")
         newMessage = ' '.join(nameOfFiles)
         newMessage += ' on ' + date
         os.system("git add .")
         os.system(f"git commit -m \'{newMessage}\'")
         os.system("git push")
-        print("\n{len(nameOfFiles)} file{'s' if len(nameOfFiles) > 0 else ''} CHANGED")
     else:
         print("No differences since last update")
 
