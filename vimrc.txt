@@ -118,7 +118,6 @@ endif
     nnoremap <silent> = :vertical resize +5<CR>
 
 
-
 " INERT MODE 
 let &t_SI = "\e[6 q"
 " REPLACE MODE
