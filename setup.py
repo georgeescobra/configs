@@ -47,8 +47,7 @@ def update():
             if "modified:" in line or "deleted:" in line:
                 line = line.split()
                 nameOfFiles.append(line[1])
-               
-        print(f"\n{len(nameOfFiles)} file{'s' if len(nameOfFiles) > 0 else ''} CHANGED")
+        print(f"{len(nameOfFiles)-1} FILE{'S' if len(nameOfFiles)-1 > 0 else ''} CHANGED\n")
         newMessage = ' '.join(nameOfFiles)
         newMessage += ' on ' + date
         os.system("git add .")
