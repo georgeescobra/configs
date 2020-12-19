@@ -51,33 +51,39 @@ def update():
         newMessage = ' '.join(nameOfFiles)
         newMessage += ' on ' + date
         os.system("git add .")
-        print('')
         os.system(f"git commit -m \'{newMessage}\'")
         os.system("git push")
     else:
         print("No differences since last update")
 
 def install():
-    """ copies necessary files from . to ~/
+    """ copies necessary files from config to home
     """
     cwd = os.getcwd() # has no trailing /
-    print(cwd)
-    os.mkdir(CACHEDIR)
+    if not os.path.isdir(CACHEDIR): 
+        os.mkdir(CACHEDIR)
     listOfFiles = os.listdir(cwd)
-    count = 1
+    countOfCache = 1
+    countOfHome = 1
     for nameOfFile in listOfFiles:
         if nameOfFile not in IGNORE and '.txt' in nameOfFile:
             nameOfFile = nameOfFile.rstrip('.txt')
             fileAtHome = f'{HOME}/.{nameOfFile}'
             fileAtCWD = f'{cwd}/{nameOfFile}'
             if os.path.isfile(fileAtHome):
-                os.system(f"cp {fileAtHome} {CACHEDIR}/{nameOfFile}.txt")
-                print(f"{count}: copied last version of {nameOfFile} to {CACHEDIR}")
-            os.system(f"cp {fileAtCWD}.txt {fileAtHome}")
-            count += 1
+                diff = os.popen(f"diff {fileAtHome} {CACHEDIR}/{nameOfFile}.txt").read()
+                if diff:
+                    os.system(f"cp {fileAtHome} {CACHEDIR}/{nameOfFile}.txt")
+                    print(f"{countOfCache}: copied last version of {nameOfFile} from HOME to {CACHEDIR}")
+                    countOfCache += 1
+            diff = os.popen(f"diff {fileAtHome} {cwd}/{nameOfFile}.txt").read()
+            if diff: # only copies if file in git repo different from home
+                os.system(f"cp {fileAtCWD}.txt {fileAtHome}")
+                print(f"{countOfHome}: copied {nameOfFile}.txt from configs repo to {HOME}")
+                countOfHome += 1
 
-    print(f"COPIED {count-1} FILES")
-    if os.path.isdir(cacheDir) and not len(os.listdir(cacheDir)): 
+    if not countOfCache-1 and not countOfHome-1: print("NO FILES WERE COPIED/CHANGED")
+    if os.path.isdir(CACHEDIR) and not len(os.listdir(CACHEDIR)): 
         print("NO BASE CONFIGS FOUND DELETING CACHE")
         os.rmdir(cacheDir)
 
