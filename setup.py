@@ -46,11 +46,11 @@ def update():
             if "modified:" in line or "deleted:" in line:
                 line = line.split()
                 nameOfFiles.append(line[1])
-        print(f"{len(nameOfFiles)-1} FILE{'S' if len(nameOfFiles)-1 > 1 else ''} CHANGED")
-        if len(nameOfFiles)-1 > 0:
+        print(f"{len(nameOfFiles)-1} FILE{'S' if len(nameOfFiles)-1 > 2 else ''} CHANGED")
+        if len(nameOfFiles)-1 > 1:
             print("Files Changed:")
             for name in nameOfFiles:
-                print(f"\t{name}") 
+                if name != "Updated:": print(f"\t{name}") 
         newMessage = ' '.join(nameOfFiles)
         newMessage += ' on ' + date
         print()
