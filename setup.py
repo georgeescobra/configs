@@ -17,7 +17,6 @@ def update():
     """
     cwd = os.getcwd()
     listOfFiles = os.listdir(cwd)
-    count = 1
     for nameOfFile in listOfFiles:
         if nameOfFile not in IGNORE and '.txt' in nameOfFile:
             nameOfFile = nameOfFile.rstrip('.txt')
@@ -26,9 +25,7 @@ def update():
             if os.path.isfile(fileAtHome): 
                 os.system(f"cp {fileAtHome} {fileAtCWD}.txt ")
                 os.system(f"cp {fileAtHome} {CACHEDIR}/{nameOfFile}.txt")
-                count += 1
 
-    print(f"COPIED {count-1} FILES")
     orig = os.getcwd()
     os.chdir(orig)
     diff = os.popen("git diff").read()
@@ -56,6 +53,7 @@ def update():
         os.system("git add .")
         os.system(f"git commit -m \'{newMessage}\'")
         os.system("git push")
+        print("\n{len(nameOfFiles)} file{'s' if len(nameOfFiles) > 0 else ''} CHANGED")
     else:
         print("No differences since last update")
 
