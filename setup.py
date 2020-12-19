@@ -51,6 +51,7 @@ def update():
         newMessage = ' '.join(nameOfFiles)
         newMessage += ' on ' + date
         os.system("git add .")
+        print('')
         os.system(f"git commit -m \'{newMessage}\'")
         os.system("git push")
     else:
