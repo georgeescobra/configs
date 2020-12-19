@@ -68,9 +68,10 @@ endif
     nnoremap <silent> <C-a> :wa<CR>
     nnoremap <silent> <C-w> :w<CR>
     inoremap <silent> <C-w> <Esc>:w<CR>
-    nnoremap <silent> <C-c> :q!<CR>
+    nnoremap <silent> <C-q> :q!<CR>
     nnoremap <silent> <C-e> :wq<CR>
 
+    nnoremap <silent> <C-c> <C-q>
     nnoremap <silent> <CR>m :w<CR>:!printf "\e[1;31m\t~~~~~~~~~~~~~new compile~~~~~~~~~~~~~\n\e[0m" && make && ./main<CR>
     nnoremap <silent> <CR>p :w<CR>:!printf "\e[1;31m\t~~~~~~~~~~~~~new compile~~~~~~~~~~~~~\n\e[0m" && python3 %
     nnoremap <CR>1 :!
