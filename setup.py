@@ -12,7 +12,7 @@ CACHEDIR = os.getcwd() + '/cache'
 IGNORE = ['sublime.txt'] # ignoring certain config files
 
 def update():
-    """ copies necessary files from ~/ to . 
+    """ copies necessary files from ~/ to config reepo 
         Then pushes to github automatically
     """
     cwd = os.getcwd()
@@ -76,11 +76,12 @@ def install():
                     os.system(f"cp {fileAtHome} {CACHEDIR}/{nameOfFile}.txt")
                     print(f"{countOfCache}: copied last version of {nameOfFile} from HOME to {CACHEDIR}")
                     countOfCache += 1
-            diff = os.popen(f"diff {fileAtHome} {cwd}/{nameOfFile}.txt").read()
-            if diff: # only copies if file in git repo different from home
-                os.system(f"cp {fileAtCWD}.txt {fileAtHome}")
-                print(f"{countOfHome}: copied {nameOfFile}.txt from configs repo to {HOME}")
-                countOfHome += 1
+
+                diff = os.popen(f"diff {fileAtHome} {cwd}/{nameOfFile}.txt").read()
+                if diff: # only copies if file in git repo different from home
+                    os.system(f"cp {fileAtCWD}.txt {fileAtHome}")
+                    print(f"{countOfHome}: copied {nameOfFile}.txt from configs repo to {HOME}")
+                    countOfHome += 1
 
     if not countOfCache-1 and not countOfHome-1: print("NO FILES WERE COPIED/CHANGED")
     if os.path.isdir(CACHEDIR) and not len(os.listdir(CACHEDIR)): 
