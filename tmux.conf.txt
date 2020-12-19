@@ -1,0 +1,37 @@
+set-window-option -g mode-keys vi
+setw -g mode-keys vi
+set-option -g prefix C-k
+unbind-key C-b
+bind-key C-k send-prefix
+
+set -g pane-border-fg black
+set -g pane-active-border-fg blue
+
+bind-key : command-prompt
+bind-key r refresh-client
+bind-key enter copy-mode
+
+# use vim-like keys for splits and windows
+bind-key s split-window -h
+bind-key d split-window -v
+bind-key h select-pane -L
+bind-key j select-pane -D
+bind-key k select-pane -U
+bind-key l select-pane -R
+
+bind-key -r [ resize-pane -U 5
+bind-key -r ] resize-pane -D 5
+bind-key -r = resize-pane -L 5
+bind-key -r - resize-pane -R 5
+
+bind-key -r n next-window
+bind-key -r b previous-window
+
+bind-key -T copy-mode-vi 'v' send -X begin-selection
+bind-key -T copy-mode-vi 'y' send -X copy-selection-and-cancel
+
+set -g default-terminal "xterm-256color"
+set -g status-right '#[fg=colour233,bg=colour241,bold] %d/%m #[fg=colour233,bg=colour245,bold] %H:%M:%S '
+set -g status-left ' '
+setw -g window-status-current-format ' #I#[fg=colour250]:#[fg=colour255]#W#[fg=colour50]#F '
+setw -g window-status-format ' #I#[fg=colour237]:#[fg=colour250]#W#[fg=colour244]#F '

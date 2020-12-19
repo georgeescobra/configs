@@ -67,6 +67,7 @@ endif
     " writes all the panes
     nnoremap <silent> <C-a> :wa<CR>
     nnoremap <silent> <C-w> :w<CR>
+    inoremap <silent> <C-w> <Esc>:w<CR>
     nnoremap <silent> <C-c> :q!<CR>
     nnoremap <silent> <C-e> :wq<CR>
 
