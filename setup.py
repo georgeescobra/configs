@@ -50,7 +50,7 @@ def update():
         if len(nameOfFiles)-1 > 1:
             print("Files Changed:")
             for name in nameOfFiles:
-                if name != "Updated:": print(f"\t{name}") 
+                if name != "Updated: ": print(f"\t{name}") 
         newMessage = ' '.join(nameOfFiles)
         newMessage += ' on ' + date
         print()
