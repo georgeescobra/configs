@@ -88,7 +88,7 @@ def install():
                     countOfHome += 1
             elif not os.path.isfile(fileAtHome): 
                 os.system(f"cp {fileAtCWD}.txt {fileAtHome}")
-                print(f"{countOfCache}: copied version of {nameOfFile} from CONFIGS to {CACHEDIR}")
+                print(f"{countOfCache}: copied version of {nameOfFile} from CONFIGS to {HOME}")
                 countOfCache += 1
 
     if not countOfCache-1 and not countOfHome-1: print("NO FILES WERE COPIED/CHANGED")
