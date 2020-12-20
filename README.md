@@ -2,6 +2,7 @@
     THIS IS TO STORE ALL MY CONFIGS THAT I USE
     use setup.py to handle and keep track of all configs
     needs python3 > 3.8
+    '.txt' file extension is used to differentiate a config template to other files
     TO RUN: $./setup.py --<flag>
 #### FLAGS:
     * more to come probs *
