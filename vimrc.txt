@@ -100,7 +100,7 @@ endif
     nnoremap <c-n> <c-y>
     nnoremap <Space>m <s-M>
     nnoremap <silent> <SPACE><SPACE> zz
-    nnoremap <S-h> %
+    nnoremap <S-M> %
 
     nnoremap n ^
     nnoremap N g_
