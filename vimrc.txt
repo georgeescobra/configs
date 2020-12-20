@@ -47,6 +47,8 @@ hi Function ctermfg=220
 hi cCustomClassName ctermfg=203
 hi clear CursorLine
 hi CursorLine ctermfg=None ctermbg=234
+hi MatchParen cterm=bold ctermbg=none ctermfg=magenta
+
 
 " remembers the last line the cursor was on
 if has("autocmd")
@@ -98,6 +100,7 @@ endif
     nnoremap <c-n> <c-y>
     nnoremap <Space>m <s-M>
     nnoremap <silent> <SPACE><SPACE> zz
+    nnoremap <S-h> %
 
     nnoremap n ^
     nnoremap N g_
