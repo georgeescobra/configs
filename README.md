@@ -2,6 +2,7 @@
     THIS IS TO STORE ALL MY CONFIGS THAT I USE
     use setup.py to handle and keep track of all configs
     needs python3 > 3.8
+    TO RUN: $./setup.py --<flag>
 #### FLAGS:
     * more to come probs *
     --install:
@@ -13,4 +14,4 @@
         Copies the configs from the ~ <home directory> to the configs repo
     --reset:
         This resets all of the config files from cache
-    setup.py contains all configurations at the top of the file
+    setup.py contains all configuration defaults at the top of the file

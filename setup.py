@@ -1,4 +1,4 @@
-#!/usr/bin/env python3.8
+#!/usr/bin/env python3
 import os
 import sys
 """
@@ -53,6 +53,7 @@ def update():
         newMessage = ' '.join(nameOfFiles)
         newMessage += ' on ' + date
         print()
+        os.system("git pull")
         os.system("git add .")
         os.system(f"git commit -m \'{newMessage}\'")
         os.system("git push")
