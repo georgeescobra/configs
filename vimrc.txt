@@ -56,10 +56,10 @@ endif
     " PANE MOVEMEN
     nnoremap <silent> <C-s> :vs<CR>:wincmd l<CR>
     nnoremap <silent> <C-d> :sp<CR>:wincmd k<CR>
-    nnoremap <silent> <C-h> :wincmd h<CR>
-    nnoremap <silent> <C-l> :wincmd l<CR>
-    nnoremap <silent> <C-j> :wincmd j<CR>
-    nnoremap <silent> <C-k> :wincmd k<CR>
+    nnoremap <silent> <C-j>h :wincmd h<CR>
+    nnoremap <silent> <C-j>l :wincmd l<CR>
+    nnoremap <silent> <C-j>j :wincmd j<CR>
+    nnoremap <silent> <C-j>k :wincmd k<CR>
 
     " fuzzy finder
     nnoremap <silent> <Tab>f :FZF<CR>
@@ -70,6 +70,7 @@ endif
     inoremap <silent> <C-w> <Esc>:w<CR>
     nnoremap <silent> <C-q> :q!<CR>
     nnoremap <silent> <C-e> :wq<CR>
+    nnoremap <silent> <C-g> :noh<CR>
 
     nnoremap <silent> <C-c> <C-q>
     nnoremap <silent> <CR>m :w<CR>:!printf "\e[1;31m\t~~~~~~~~~~~~~new compile~~~~~~~~~~~~~\n\e[0m" && make && ./main<CR>
