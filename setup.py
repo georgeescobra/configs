@@ -5,14 +5,16 @@ import sys
 this assumes that the config files are located in home directory ~
 needs python3.8 at least
 TODO: probs need to add more files at some point
+        ADD FLAH TO EXCLUIDE CERTAIN FILES
 """
 HOME = os.path.expanduser("~") # home directory no trailing / 
 CACHEDIR = os.getcwd() + '/cache'
 IGNORE = ['sublime.txt'] # ignoring certain config files
 
 def update():
-    """ copies necessary files from ~/ to config reepo 
-        Then pushes to github automatically
+    """ 
+    copies necessary files from ~/ to config repo 
+    Then pushes to github automatically
     """
     cwd = os.getcwd()
     listOfFiles = os.listdir(cwd)
@@ -61,7 +63,8 @@ def update():
         print("No differences since last update")
 
 def install():
-    """ copies necessary files from config to home
+    """ 
+    copies necessary files from config to home
     """
     cwd = os.getcwd() # has no trailing /
     if not os.path.isdir(CACHEDIR): 
@@ -97,8 +100,8 @@ def install():
         os.rmdir(cacheDir)
 
 def reset():
-    """ resets to last version of the file from cache
-        ADD FLAH TO EXCLUIDE CERTAIN FILES
+    """ 
+    resets to last version of the file from cache
     """
     if not os.path.isdir(CACHEDIR):
         print("NO CACHE TO RESET FROM TRY GIT PULL AND --INSTALL")
@@ -127,7 +130,13 @@ def main():
         flag = flag.strip('--')
         if func := flags.get(flag, None):
             func()
-        else: print('FLAG DOES NOT EXIST')
+        else: 
+            print(f'FLAG: {flag} DOES NOT EXIST')
+            print('FLAGS SUPPORTED: ')
+            for names in flags.keys():
+                print(f'--{names}', end='\t') 
+                print(f'\b\t{flags.get(names).__doc__}', end='\r')
+
 
 if __name__ == "__main__": main()
 
