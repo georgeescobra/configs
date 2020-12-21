@@ -3,7 +3,7 @@
     use setup.py to handle and keep track of all configs
     needs python3 > 3.8
     '.txt' file extension is used to differentiate a config template to other files
-    TO RUN: $./setup.py --<flag>
+    TO RUN: $chmod +x setup.py $./setup.py --<flag>
 #### FLAGS:
     * more to come probs *
     --install:
