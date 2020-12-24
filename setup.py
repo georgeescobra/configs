@@ -9,7 +9,7 @@ TODO: probs need to add more files at some point
 """
 HOME = os.path.expanduser("~") # home directory no trailing / 
 CACHEDIR = os.getcwd() + '/cache'
-IGNORE = ['sublime.txt'] # ignoring certain config files
+IGNORE = ['sublime.txt', 'bashrc.txt', 'setup.py'] # ignoring certain config files
 
 def update():
     """ 

@@ -4,10 +4,10 @@
     needs python3 > 3.8
     These configs are bash specific
     Also look at vimrc and run necessary commands for vundle (probably should also write a function for this)
+    brew install coreutils -> for MACOS using dircolors
     '.txt' file extension is used to differentiate a config template to other files
     TO RUN: $chmod +x setup.py
             $./setup.py --<flag>
-
 #### FLAGS:
     * more to come probs *
     --install:
