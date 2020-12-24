@@ -2,8 +2,11 @@
     THIS IS TO STORE ALL MY CONFIGS THAT I USE
     use setup.py to handle and keep track of all configs
     needs python3 > 3.8
+    These configs are bash specific
+    Also look at vimrc and run necessary commands for vundle (probably should also write a function for this)
     '.txt' file extension is used to differentiate a config template to other files
-    TO RUN: $chmod +x setup.py $./setup.py --<flag>
+    TO RUN: $chmod +x setup.py
+            $./setup.py --<flag>
 #### FLAGS:
     * more to come probs *
     --install:

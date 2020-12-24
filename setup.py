@@ -95,9 +95,10 @@ def install():
                 countOfCache += 1
 
     if not countOfCache-1 and not countOfHome-1: print("NO FILES WERE COPIED/CHANGED")
+    else: print("Install Complete. Restart Terminal")
     if os.path.isdir(CACHEDIR) and not len(os.listdir(CACHEDIR)): 
         print("NO BASE CONFIGS FOUND DELETING CACHE")
-        os.rmdir(cacheDir)
+        os.rmdir(CACHEDIR)
 
 def reset():
     """ 
