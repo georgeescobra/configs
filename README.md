@@ -7,6 +7,7 @@
     '.txt' file extension is used to differentiate a config template to other files
     TO RUN: $chmod +x setup.py
             $./setup.py --<flag>
+
 #### FLAGS:
     * more to come probs *
     --install:
