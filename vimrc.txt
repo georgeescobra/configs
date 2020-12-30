@@ -1,4 +1,3 @@
-" VIMRC FOR MY UBUNTU IN WINDOWS
 set nocompatible
 set number
 set mouse =a
@@ -36,9 +35,12 @@ call vundle#begin()
     Plugin 'junegunn/fzf'
 call vundle#end()  
 filetype plugin indent on 
+filetype plugin on
+
 
 " syntax highlighting custom colors
 " enchaned highlighting needs to be opened
+syntax on
 hi Comment ctermfg=238
 hi LineNr ctermfg=white
 hi PreProc ctermfg=green
@@ -122,6 +124,7 @@ endif
 
     nnoremap <silent> - :vertical resize -5<CR>
     nnoremap <silent> = :vertical resize +5<CR>
+
 
 " INERT MODE 
 let &t_SI = "\e[6 q"
