@@ -123,6 +123,13 @@ endif
     vnoremap <silent> ") xi()<esc>P
     vnoremap <silent> "} xi{}<esc>P
 
+    " quote line
+    nnoremap <silent> "l I"<esc>A"<esc>
+    nnoremap <silent> "]l I[<esc>A]<esc>
+    nnoremap <silent> ")l I(<esc>A)<esc>
+    nnoremap <silent> "}l I{<esc>A}<esc>
+    
+
     " New way to escape 
     inoremap <silent> <c-j> <c-[>
     vnoremap <silent> <c-j> <c-[>
