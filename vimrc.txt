@@ -50,6 +50,7 @@ hi cCustomClassName ctermfg=203
 hi clear CursorLine
 hi CursorLine ctermfg=None ctermbg=234
 hi MatchParen cterm=bold ctermbg=none ctermfg=magenta
+hi Directory ctermfg=107
 
 
 " remembers the last line the cursor was on
@@ -149,6 +150,12 @@ let &t_SI = "\e[6 q"
 let &t_SR = "\e[0 q"
 " OTHER MODE
 let &t_EI = "\e[2 q" 
+
+" NETRW directory tree
+let g:netrw_liststyle=3
+let g:netrw_special_syntax=1
+let g:netrw_bufsettings = 'set rnu'
+
 
 " text color : rgb(215,175,135)
 " background color : rgb(8,8,8)
