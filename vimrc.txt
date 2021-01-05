@@ -111,10 +111,10 @@ endif
     vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
 
     " to put quotations inside single word and selected
-    nnoremap <silent> "w diWi""<esc>P
-    nnoremap <silent> 'w diWi''<esc>P
-    vnoremap <silent> "w xi""<esc>P
-    vnoremap <silent> 'w xi''<esc>P
+    nnoremap <silent> "" diWi""<esc>P
+    nnoremap <silent> "' diWi''<esc>P
+    vnoremap <silent> "" xi""<esc>P
+    vnoremap <silent> "' xi''<esc>P
 
     " to put brackets and parantheses in single words and selected
     nnoremap <silent> ") diWi()<esc>P
