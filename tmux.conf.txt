@@ -5,9 +5,9 @@ set-option -g prefix C-n
 unbind-key C-b
 bind-key C-n send-prefix
 
-if-shell -b '[ `echo "$(tmux -V | grep -o "[2-9]\.[0-9]\+") >= 2.8" | bc` -eq 1 ]' \
-    'set -g pane-border-style fg="#080808"; set -g pane-active-border-style fg=blue' \
-    'set -g pane-border-fg colour237; set -g pane-border-bg "#080808" ; set -g pane-active-border-fg blue;' 
+set -g pane-border-fg "#080808"
+set -g pane-active-border-fg blue
+
 
 bind-key : command-prompt
 bind-key r refresh-client

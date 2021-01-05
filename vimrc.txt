@@ -1,3 +1,4 @@
+" VIMRC FOR MY UBUNTU IN WINDOWS
 set nocompatible
 set number
 set mouse =a
@@ -35,12 +36,9 @@ call vundle#begin()
     Plugin 'junegunn/fzf'
 call vundle#end()  
 filetype plugin indent on 
-filetype plugin on
-
 
 " syntax highlighting custom colors
 " enchaned highlighting needs to be opened
-syntax on
 hi Comment ctermfg=238
 hi LineNr ctermfg=white
 hi PreProc ctermfg=green
@@ -112,6 +110,19 @@ endif
     " to be able to search for highlighted words
     vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
 
+    " to put quotations inside single word and selected
+    nnoremap <silent> "w diWi""<esc>P
+    nnoremap <silent> 'w diWi''<esc>P
+    vnoremap <silent> "w xi""<esc>P
+    vnoremap <silent> 'w xi''<esc>P
+
+    " to put brackets and parantheses in single words and selected
+    nnoremap <silent> ") diWi()<esc>P
+    nnoremap <silent> "] diWi[]<esc>P
+    nnoremap <silent> "} diWi{}<esc>P
+    vnoremap <silent> ") xi()<esc>P
+    vnoremap <silent> "} xi{}<esc>P
+
     " New way to escape 
     inoremap <silent> <c-j> <c-[>
     vnoremap <silent> <c-j> <c-[>
@@ -124,7 +135,6 @@ endif
 
     nnoremap <silent> - :vertical resize -5<CR>
     nnoremap <silent> = :vertical resize +5<CR>
-
 
 " INERT MODE 
 let &t_SI = "\e[6 q"
