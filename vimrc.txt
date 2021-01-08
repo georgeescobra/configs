@@ -10,7 +10,6 @@ set expandtab
 set clipboard=unnamed
 set relativenumber
 set noswapfile
-set nowrap
 set noerrorbells
 set laststatus=2
 set wrap
@@ -20,8 +19,9 @@ set autoindent
 set incsearch
 set hlsearch
 set cursorline
-set timeoutlen=1000 ttimeoutlen=0
+set timeoutlen=800 ttimeoutlen=800
 set showcmd
+set wildmenu
 syntax on
 
 " installing vim plugin: 
@@ -72,24 +72,20 @@ endif
     " writes all the panes
     nnoremap <silent> <C-a> :wa<CR>
     nnoremap <silent> <C-w> :w<CR>
-    inoremap <silent> <C-w> <Esc>:w<CR>
     nnoremap <silent> <C-q> :q!<CR>
     nnoremap <silent> <C-e> :wq<CR>
     nnoremap <silent> <C-g> :noh<CR>
 
-    nnoremap <silent> <C-c> <C-q>
-    nnoremap <silent> <CR>m :w<CR>:!printf "\e[1;31m\t~~~~~~~~~~~~~new compile~~~~~~~~~~~~~\n\e[0m" && make && ./main<CR>
-    nnoremap <silent> <CR>p :w<CR>:!printf "\e[1;31m\t~~~~~~~~~~~~~new compile~~~~~~~~~~~~~\n\e[0m" && python3 %
-    nnoremap <CR>1 :!
+    " To enter visual select block
+    nnoremap <silent> <C-c> <C-q> 
 
-    " Easier Movement Just replacing tab with shift
+    " Easier way to run files
+    nnoremap <silent> <tab>m :w<CR>:!printf "\e[1;31m\t~~~~~~~~~~~~~new compile~~~~~~~~~~~~~\n\e[0m" && make && ./main<CR>
+    nnoremap <silent> <tab>p :w<CR>:!printf "\e[1;31m\t~~~~~~~~~~~~~new compile~~~~~~~~~~~~~\n\e[0m" && python3 %
+
+    " Easier Movement 
     nnoremap <Space>j <c-D>
     nnoremap <Space>k <c-U>
-
-    " Moving between buffers
-    " Moving between ctags
-    nnoremap <Tab>] <c-]>
-    nnoremap <Tab>[ <c-[>
 
     " Goes to top, bottom of screen
     nnoremap <Space>h <S-h>
@@ -97,45 +93,49 @@ endif
     nnoremap <Space>f <c-f>
     nnoremap <Space>d <c-b>
 
-    " Moves screen down, up 1
     " Centers cursor middle
-    nnoremap <c-m> <c-e>
-    nnoremap <c-n> <c-y>
     nnoremap <Space>m <s-M>
     nnoremap <silent> <SPACE><SPACE> zz
-    nnoremap <S-M> %
 
-    nnoremap n ^
-    nnoremap N g_
+    " Moves screen down, up 1
+    nnoremap <c-m> <c-e>
+    nnoremap <c-n> <c-y>
+    nnoremap <S-M> %
+    
+    " Go to mark <mark>
+    nnoremap gm '
+
+    " First and Last Character of line
+    nnoremap z ^
+    nnoremap Z g_
 
     " to be able to search for highlighted words
     vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
 
     " to put quotations inside single word and selected
-    nnoremap <silent> "" diWi""<esc>P
-    nnoremap <silent> "' diWi''<esc>P
-    vnoremap <silent> "" xi""<esc>P
-    vnoremap <silent> "' xi''<esc>P
+    nnoremap <silent> <C-x>" diWi""<esc>P
+    nnoremap <silent> <C-x>' diWi''<esc>P
+    vnoremap <silent> <C-x>" xi""<esc>P
+    vnoremap <silent> <C-x>' xi''<esc>P
 
     " to put brackets and parantheses in single words and selected
-    nnoremap <silent> ") diWi()<esc>P
-    nnoremap <silent> "] diWi[]<esc>P
-    nnoremap <silent> "} diWi{}<esc>P
-    vnoremap <silent> ") xi()<esc>P
-    vnoremap <silent> "} xi{}<esc>P
+    nnoremap <silent> <C-x>) diWi()<esc>P
+    nnoremap <silent> <C-x>] diWi[]<esc>P
+    nnoremap <silent> <C-x>} diWi{}<esc>P
+    vnoremap <silent> <C-x>) xi()<esc>P
+    vnoremap <silent> <C-x>} xi{}<esc>P
 
     " quote line
-    nnoremap <silent> "l I"<esc>A"<esc>
-    nnoremap <silent> "]l I[<esc>A]<esc>
-    nnoremap <silent> ")l I(<esc>A)<esc>
-    nnoremap <silent> "}l I{<esc>A}<esc>
+    nnoremap <silent> <C-x>"l I"<esc>A"<esc>
+    nnoremap <silent> <C-x>'l I'<esc>A'<esc>
+    nnoremap <silent> <C-x>]l I[<esc>A]<esc>
+    nnoremap <silent> <C-x>)l I(<esc>A)<esc>
+    nnoremap <silent> <C-x>}l I{<esc>A}<esc>
     
 
     " New way to escape 
     inoremap <silent> <c-j> <c-[>
     vnoremap <silent> <c-j> <c-[>
-
-    nnoremap <silent> <c-x> d$
 
     " To resize window
     nnoremap <silent> <Tab>- :resize -5<CR>
@@ -150,12 +150,10 @@ let &t_SI = "\e[6 q"
 let &t_SR = "\e[0 q"
 " OTHER MODE
 let &t_EI = "\e[2 q" 
-
 " NETRW directory tree
 let g:netrw_liststyle=3
 let g:netrw_special_syntax=1
 let g:netrw_bufsettings = 'set rnu'
-
 
 " text color : rgb(215,175,135)
 " background color : rgb(8,8,8)
