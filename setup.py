@@ -4,8 +4,6 @@ import sys
 """
 this assumes that the config files are located in home directory ~
 needs python3.8 at least
-TODO: probs need to add more files at some point
-        ADD FLAH TO EXCLUIDE CERTAIN FILES
 """
 HOME = os.path.expanduser("~") # home directory no trailing / 
 CACHEDIR = os.getcwd() + '/cache'
