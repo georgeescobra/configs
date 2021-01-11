@@ -1,0 +1,99 @@
+# You can create a new keybinding in this file by typing "key" and then hitting
+# tab.
+'atom-workspace':
+    'tab f': 'fuzzy-finder:toggle-file-finder'
+    'ctrl-j': 'core:cancel'
+'atom-text-editor':
+  'ctrl-w' : 'unset!'
+'atom-text-editor.vim-mode-plus:not(normal-mode)':
+  'ctrl-j': 'vim-mode-plus:reset-normal-mode'
+  'ctrl-w': 'core:save'
+
+'atom-text-editor.vim-mode-plus:not(.insert-mode)':
+  'ctrl-w': 'unset!'
+  'space j': 'vim-mode-plus:scroll-half-screen-down'
+  'space k': 'vim-mode-plus:scroll-half-screen-up'
+  'space h': 'vim-mode-plus:move-to-top-of-screen'
+  'space l': 'vim-mode-plus:move-to-bottom-of-screen'
+  'space f': 'vim-mode-plus:scroll-full-screen-down'
+  'space d': 'vim-mode-plus:scroll-full-screen-up'
+  'ctrl-m': 'vim-mode-plus:mini-scroll-down'
+  'ctrl-n': 'vim-mode-plus:mini-scroll-up'
+  'ctrl-j': 'window:focus-pane-below'
+  'ctrl-k': 'window:focus-pane-above'
+  'ctrl-h': 'window:focus-pane-on-left'
+  'ctrl-l': 'window:focus-pane-on-right'
+  'ctrl-d': 'pane:split-down-and-copy-active-item'
+  'ctrl-s': 'pane:split-right-and-copy-active-item'
+  'g m': 'vim-mode-plus:move-to-mark-line'
+  'z z': 'vim-mode-plus:move-to-first-character-of-line-and-down'
+  'Z': 'vim-mode-plus:move-to-last-nonblank-character-of-line-and-down'
+  'M' : 'bracket-matcher:go-to-matching-bracket'
+
+'.tree-view':
+  'ctrl-l': 'window:focus-pane-on-right'
+  'ctrl-s': "tree-view:open-selected-entry-right"
+  'ctrl-d': "tree-view:open-selected-entry-down"
+
+'.editor':
+  'ctrl-l': 'window:focus-pane-on-right'
+
+'atom-workspace atom-pane':
+  'ctrl--': 'pane:decrease-size'
+  'ctrl-=': 'pane:increase-size'
+
+'atom-text-editor.vim-mode-plus':
+  'ctrl-c': 'unset!'
+
+# ignore eveerything under this
+'atom-workspace atom-text-editor:not([mini])':
+  'ctrl-k ctrl-0': 'unset!'
+  'ctrl-k ctrl-1': 'unset!'
+  'ctrl-k ctrl-2': 'unset!'
+  'ctrl-k ctrl-3': 'unset!'
+  'ctrl-k ctrl-4': 'unset!'
+  'ctrl-k ctrl-5': 'unset!'
+  'ctrl-k ctrl-6': 'unset!'
+  'ctrl-k ctrl-7': 'unset!'
+  'ctrl-k ctrl-8': 'unset!'
+  'ctrl-k ctrl-9': 'unset!'
+
+'body':
+  'ctrl-tab': 'pane:show-next-item'
+  'ctrl-shift-tab': 'pane:show-previous-item'
+  'ctrl-w': 'unset!'
+  'ctrl-s': 'unset!'
+  'ctrl-k': 'unset!'
+  'ctrl-k ctrl-alt-w': 'unset!'
+  'ctrl-k ctrl-down': 'unset!'
+  'ctrl-k ctrl-left': 'unset!'
+  'ctrl-k ctrl-n': 'unset!'
+  'ctrl-k ctrl-p': 'unset!'
+  'ctrl-k ctrl-right': 'unset!'
+  'ctrl-k ctrl-up': 'unset!'
+  'ctrl-k ctrl-w': 'unset!'
+  'ctrl-k down': 'unset!'
+  'ctrl-k left': 'unset!'
+  'ctrl-k right': 'unset!'
+  'ctrl-k up': 'unset!'
+  'ctrl-k up': 'unset!'
+
+'.platform-win32, .platform-linux':
+  'ctrl-k ctrl-b': 'unset!'
+
+'.platform-win32 atom-text-editor, .platform-linux atom-text-editor':
+  'ctrl-k ctrl-d': 'unset!'
+
+'atom-workspace atom-text-editor':
+  'ctrl-k ctrl-l': 'unset!'
+  'ctrl-k ctrl-u': 'unset!'
+
+
+'.platform-win32 .tree-view, .platform-linux .tree-view':
+  'ctrl-k down': 'unset!'
+  'ctrl-k h': 'unset!'
+  'ctrl-k j': 'unset!'
+  'ctrl-k k': 'unset!'
+  'ctrl-k l': 'unset!'
+  'ctrl-k left': 'unset!'
+  'ctrl-k right': 'unset!'

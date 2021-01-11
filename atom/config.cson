@@ -1,0 +1,30 @@
+"*":
+  "bracket-matcher":
+    alwaysSkipClosingPairs: true
+    highlightMatchingLineNumber: true
+  core:
+    audioBeep: false
+    autoHideMenuBar: true
+    telemetryConsent: "no"
+    themes: [
+      "atom-dark-ui"
+      "atom-dark-syntax"
+    ]
+    uriHandlerRegistration: "always"
+  editor:
+    fontFamily: "Courrier New,Menlo, Consolas, DejaVu Sans Mono, monospace"
+    fontSize: 13
+    softWrap: true
+    tabLength: 4
+    tabType: "soft"
+  "exception-reporting":
+    userId: "a218d40c-2023-4c28-9e0d-660074c63069"
+  "gpp-compiler": {}
+  "relative-numbers":
+    showAbsoluteNumbersInInsertMode: false
+    startAtOne: true
+  "seti-ui":
+    fontFamily: "Courrier New,Menlo, Consolas, DejaVu Sans Mono, monospace"
+    fontSize: 12
+  welcome:
+    showOnStartup: false

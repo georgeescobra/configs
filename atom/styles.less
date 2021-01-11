@@ -1,0 +1,28 @@
+// style the background color of the tree view
+.tree-view {
+  background-color: rgb(8,8,8);
+}
+
+// style the background and foreground colors on the atom-text-editor-element itself
+atom-text-editor {
+  background-color: rgb(8,8,8);
+  color: rgb(215,175,135);
+
+}
+
+// style UI elements inside atom-text-editor
+atom-text-editor .cursor {
+  border-color: red;
+}
+atom-text-editor.editor .relative.current-line {
+  color: rgb(91,91,91);
+}
+
+atom-text-editor::shadow .comment {
+  color: grey;
+}
+.editor.is-focused {
+  .line.cursor-line {
+        background: #7d7c7c;
+  }
+}
