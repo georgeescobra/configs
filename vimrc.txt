@@ -37,11 +37,12 @@ call vundle#begin()
 call vundle#end()  
 filetype plugin indent on 
 colorscheme gruvbox
+set bg=dark
 let g:gruvbox_contrast_dark="hard"
 
 " syntax highlighting custom colors
 " enchaned highlighting needs to be opened
-hi Normal ctermbg=232
+hi Normal ctermfg=255 ctermbg=232
 hi Comment ctermfg=238
 hi LineNr ctermfg=white
 hi PreProc ctermfg=green
@@ -68,8 +69,6 @@ endif
     nnoremap <silent> <C-l> :wincmd l<CR>
     nnoremap <silent> <C-j> :wincmd j<CR>
     nnoremap <silent> <C-k> :wincmd k<CR>
-colorscheme gruvbox
-set bg=dark
 
     " fuzzy finder
     nnoremap <silent> <Tab>f :FZF<CR>
