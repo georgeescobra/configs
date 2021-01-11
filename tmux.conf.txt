@@ -5,8 +5,8 @@ set-option -g prefix C-n
 unbind-key C-b
 bind-key C-n send-prefix
 
-set -g pane-border-fg "#080808"
-set -g pane-active-border-fg blue
+set -g pane-border-style fg="#1C1C1C"
+set -g pane-active-border-style bg="black" 
 
 
 bind-key : command-prompt

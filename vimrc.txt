@@ -37,10 +37,11 @@ call vundle#begin()
 call vundle#end()  
 filetype plugin indent on 
 colorscheme gruvbox
+let g:gruvbox_contrast_dark="hard"
 
 " syntax highlighting custom colors
 " enchaned highlighting needs to be opened
-hi Normal ctermbg=0
+hi Normal ctermbg=232
 hi Comment ctermfg=238
 hi LineNr ctermfg=white
 hi PreProc ctermfg=green
