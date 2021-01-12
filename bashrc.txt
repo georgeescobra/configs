@@ -93,5 +93,3 @@ set -o vi
 export EDITOR="vim"
 export VISUAL="vim"
 export BROWSER=/mnt/d/BraveSoftware/Brave-Browser/Application/brave.exe
-export BASH_SILENCE_DEPRECATION_WARNING=1
-

@@ -7,7 +7,7 @@ needs python3.8 at least
 """
 HOME = os.path.expanduser("~") # home directory no trailing / 
 CACHEDIR = os.getcwd() + '/cache'
-IGNORE = ['sublime.txt', 'bashrc.txt', 'setup.py'] # ignoring certain config files
+IGNORE = ['sublime.txt', 'setup.py'] # ignoring certain config files
 
 def update():
     """ 
