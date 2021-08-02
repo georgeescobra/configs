@@ -5,7 +5,7 @@ set-option -g prefix C-n
 unbind-key C-b
 bind-key C-n send-prefix
 
-set -g pane-border-style fg="#080808"
+set -g pane-border-style fg="#1C1C1C"
 set -g pane-active-border-style bg="black" 
 
 
@@ -15,7 +15,7 @@ bind-key enter copy-mode
 
 # use vim-like keys for splits and windows
 bind-key s split-pane -h
-bind-key d split-pane -v
+bind-key a split-pane -v
 bind-key h select-pane -L
 bind-key j select-pane -D
 bind-key k select-pane -U

@@ -71,6 +71,7 @@ alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 alias brave='sensible-browser'
+alias odds='cd /mnt/d/AtOdds/website/atoddsweb'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert

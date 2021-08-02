@@ -34,6 +34,9 @@ set completeopt-=preview
 call vundle#begin()
     Plugin 'gruvbox-community/gruvbox' 
     Plugin 'junegunn/fzf'
+    Plugin 'preservim/nerdtree'
+    Plugin 'mxw/vim-jsx'
+    Plugin 'pangloss/vim-javascript'
 call vundle#end()  
 filetype plugin indent on 
 colorscheme gruvbox
@@ -63,51 +66,33 @@ if has("autocmd")
 endif
 " CUSTOM KEY BINDS
     " PANE MOVEMEN
+    inoremap <silent> <C-j> <ESC>
+    vnoremap <silent> <C-j> <ESC>
     nnoremap <silent> <C-s> :vs<CR>:wincmd l<CR>
-    nnoremap <silent> <C-d> :sp<CR>:wincmd k<CR>
+    nnoremap <silent> <C-a> :sp<CR>:wincmd k<CR>
     nnoremap <silent> <C-h> :wincmd h<CR>
     nnoremap <silent> <C-l> :wincmd l<CR>
     nnoremap <silent> <C-j> :wincmd j<CR>
     nnoremap <silent> <C-k> :wincmd k<CR>
 
     " fuzzy finder
-    nnoremap <silent> <Tab>f :FZF<CR>
+    nnoremap <space>n :NERDTreeFocus<CR>
+    nnoremap <C-t> :NERDTreeToggle<CR>
+    nnoremap <space>f :FZF<CR>
 
-    " writes all the panes
-    nnoremap <silent> <C-a> :wa<CR>
-    nnoremap <silent> <C-w> :w<CR>
-    nnoremap <silent> <C-q> :q!<CR>
-    nnoremap <silent> <C-e> :wq<CR>
-    nnoremap <silent> <C-g> :noh<CR>
-
-    " To enter visual select block
-    nnoremap <silent> <C-c> <C-q> 
 
     " Easier way to run files
     nnoremap <silent> <tab>m :w<CR>:!printf "\e[1;31m\t~~~~~~~~~~~~~new compile~~~~~~~~~~~~~\n\e[0m" && make && ./main<CR>
     nnoremap <silent> <tab>p :w<CR>:!printf "\e[1;31m\t~~~~~~~~~~~~~new compile~~~~~~~~~~~~~\n\e[0m" && python3 %
 
-    " Easier Movement 
-    nnoremap <Space>j <c-D>
-    nnoremap <Space>k <c-U>
-
-    " Goes to top, bottom of screen
-    nnoremap <Space>h <S-h>
-    nnoremap <Space>l <S-l>
-    nnoremap <Space>f <c-f>
-    nnoremap <Space>d <c-b>
-
-    " Centers cursor middle
-    nnoremap <Space>m <s-M>
     nnoremap <silent> <SPACE><SPACE> zz
 
+
     " Moves screen down, up 1
-    nnoremap <c-m> <c-e>
-    nnoremap <c-n> <c-y>
-    nnoremap <S-M> %
+    nnoremap <c-d> <c-u>
+    nnoremap <c-f> <c-d>
     
-    " Go to mark <mark>
-    nnoremap gm '
+    nnoremap <silent> <c-g> :noh<CR>
 
     " First and Last Character of line
     nnoremap z ^
@@ -115,30 +100,6 @@ endif
 
     " to be able to search for highlighted words
     vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
-
-    " to put quotations inside single word and selected
-    nnoremap <silent> <C-x>" diWi""<esc>P
-    nnoremap <silent> <C-x>' diWi''<esc>P
-    vnoremap <silent> <C-x>" xi""<esc>P
-    vnoremap <silent> <C-x>' xi''<esc>P
-
-    " to put brackets and parantheses in single words and selected
-    nnoremap <silent> <C-x>) diWi()<esc>P
-    nnoremap <silent> <C-x>] diWi[]<esc>P
-    nnoremap <silent> <C-x>} diWi{}<esc>P
-    vnoremap <silent> <C-x>) xi()<esc>P
-    vnoremap <silent> <C-x>} xi{}<esc>P
-
-    " quote line
-    nnoremap <silent> <C-x>"l I"<esc>A"<esc>
-    nnoremap <silent> <C-x>'l I'<esc>A'<esc>
-    nnoremap <silent> <C-x>]l I[<esc>A]<esc>
-    nnoremap <silent> <C-x>)l I(<esc>A)<esc>
-    nnoremap <silent> <C-x>}l I{<esc>A}<esc>
-    
-    " New way to escape 
-    inoremap <silent> <c-j> <c-[>
-    vnoremap <silent> <c-j> <c-[>
 
     " To resize window
     nnoremap <silent> <Tab>- :resize -5<CR>
