@@ -22,7 +22,10 @@ set cursorline
 set timeoutlen=800 ttimeoutlen=800
 set showcmd
 set wildmenu
+set ma
 syntax on
+set t_Co=256 
+
 
 " installing vim plugin: 
 "  git clone https://github.com/VundleVim/Vundle.vim.git && ~/.vim/bundle/Vundle.vim  
@@ -33,7 +36,8 @@ set rtp+=~/.vim/bundle/fzf
 set completeopt-=preview
 call vundle#begin()
     Plugin 'gruvbox-community/gruvbox' 
-    Plugin 'junegunn/fzf'
+    Plugin 'junegunn/fzf', { 'do': { -> fzf#install() } }
+    Plugin 'junegunn/fzf.vim'
     Plugin 'preservim/nerdtree'
     Plugin 'mxw/vim-jsx'
     Plugin 'pangloss/vim-javascript'
@@ -42,28 +46,14 @@ filetype plugin indent on
 colorscheme gruvbox
 set bg=dark
 let g:gruvbox_contrast_dark="hard"
-
-" syntax highlighting custom colors
-" enchaned highlighting needs to be opened
-hi Normal ctermfg=255 ctermbg=232
-hi Comment ctermfg=238
-hi LineNr ctermfg=white
-hi PreProc ctermfg=green
-hi String ctermfg=107
-hi Statement ctermfg=51
-hi Type ctermfg=134
-hi Function ctermfg=220
-hi cCustomClassName ctermfg=203
-hi clear CursorLine
-hi CursorLine ctermfg=None ctermbg=234
-hi MatchParen cterm=bold ctermbg=none ctermfg=magenta
 hi Directory ctermfg=107
-
 
 " remembers the last line the cursor was on
 if has("autocmd")
       au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal! g`\"zz" | endif
 endif
+" opens NERDTree by default
+autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
 " CUSTOM KEY BINDS
     " PANE MOVEMEN
     inoremap <silent> <C-j> <ESC>
@@ -74,37 +64,26 @@ endif
     nnoremap <silent> <C-l> :wincmd l<CR>
     nnoremap <silent> <C-j> :wincmd j<CR>
     nnoremap <silent> <C-k> :wincmd k<CR>
-
     " fuzzy finder
     nnoremap <space>n :NERDTreeFocus<CR>
-    nnoremap <C-t> :NERDTreeToggle<CR>
-    nnoremap <space>f :FZF<CR>
-
-
+    nnoremap <space>x :NERDTreeToggle<CR>
+    nnoremap <space>f :Files<CR>
     " Easier way to run files
     nnoremap <silent> <tab>m :w<CR>:!printf "\e[1;31m\t~~~~~~~~~~~~~new compile~~~~~~~~~~~~~\n\e[0m" && make && ./main<CR>
     nnoremap <silent> <tab>p :w<CR>:!printf "\e[1;31m\t~~~~~~~~~~~~~new compile~~~~~~~~~~~~~\n\e[0m" && python3 %
-
     nnoremap <silent> <SPACE><SPACE> zz
-
-
     " Moves screen down, up 1
     nnoremap <c-d> <c-u>
     nnoremap <c-f> <c-d>
-    
     nnoremap <silent> <c-g> :noh<CR>
-
     " First and Last Character of line
     nnoremap z ^
     nnoremap Z g_
-
     " to be able to search for highlighted words
     vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
-
     " To resize window
     nnoremap <silent> <Tab>- :resize -5<CR>
     nnoremap <silent> <Tab>= :resize +5<CR>
-
     nnoremap <silent> - :vertical resize -5<CR>
     nnoremap <silent> = :vertical resize +5<CR>
 
@@ -118,6 +97,13 @@ let &t_EI = "\e[2 q"
 let g:netrw_liststyle=3
 let g:netrw_special_syntax=1
 let g:netrw_bufsettings = 'set rnu'
+let NERDTreeShowLineNumbers=1
+autocmd FileType nerdtree setlocal relativenumber
+let g:fzf_buffers_jump = 1
+command! -bang -nargs=? -complete=dir Files
+    \ call fzf#vim#files(<q-args>, {'options': ['--layout=reverse', '--info=inline', '--preview', 'cat {}']}, <bang>0)
+let g:fzf_command_prefix = 'Fzf'
+
 
 " text color : rgb(215,175,135)
 " background color : rgb(8,8,8)
