@@ -25,6 +25,10 @@ set wildmenu
 set ma
 syntax on
 set t_Co=256 
+set statusline+=%<%F
+set statusline+=%M
+set statusline+=%=
+set statusline+=\ %l/%L\ lines,\ %P
 
 
 " installing vim plugin: 
