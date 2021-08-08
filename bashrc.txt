@@ -72,6 +72,7 @@ alias la='ls -A'
 alias l='ls -CF'
 alias brave='sensible-browser'
 alias odds='cd /mnt/d/AtOdds/website/'
+alias config='~/configs/setup.py'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -91,6 +92,7 @@ fi
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 alias f="fzf-tmux"
 set -o vi
+bind '"\C-e":"`__fzf_cd__`\n"'
 export EDITOR="vim"
 export VISUAL="vim"
 export BROWSER=/mnt/d/BraveSoftware/Brave-Browser/Application/brave.exe

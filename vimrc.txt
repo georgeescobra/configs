@@ -91,8 +91,6 @@ autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTr
     nnoremap <silent> - :vertical resize -5<CR>
     nnoremap <silent> = :vertical resize +5<CR>
 
-" INERT MODE 
-let &t_SI = "\e[6 q"
 " REPLACE MODE
 let &t_SR = "\e[0 q"
 " OTHER MODE
