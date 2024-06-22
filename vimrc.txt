@@ -30,62 +30,32 @@ set statusline+=%M
 set statusline+=%=
 set statusline+=\ %l/%L\ lines,\ %P
 
-
 " installing vim plugin:
+"  mkdir ~/.vim/bundle
+"  cd ~/.vim/bundle
 "  git clone https://github.com/VundleVim/Vundle.vim.git && ~/.vim/bundle/Vundle.vim
 " :PluginInstall
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
-set rtp+=~/.vim/bundle/fzf
 set completeopt-=preview
 call vundle#begin()
 Plugin 'gruvbox-community/gruvbox'
-Plugin 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plugin 'junegunn/fzf.vim'
-Plugin 'preservim/nerdtree'
-Plugin 'mxw/vim-jsx'
-Plugin 'pangloss/vim-javascript'
-Plugin 'Chiel92/vim-autoformat'
 call vundle#end()
 filetype plugin indent on
 colorscheme gruvbox
-set bg=dark
 let g:gruvbox_contrast_dark="hard"
+set bg=dark
 hi Directory ctermfg=107
 
 " remembers the last line the cursor was on
 if has("autocmd")
     au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal! g`\"zz" | endif
 endif
-" CUSTOM KEY BINDS
-" PANE MOVEMENT
-nnoremap <silent> <C-h> <C-w>h
-nnoremap <silent> <C-l> <C-w>l
-nnoremap <silent> <C-j> <C-w>j
-nnoremap <silent> <C-k> <C-w>k
-" fuzzy finder
-nnoremap <space>n :NERDTreeFocus<CR>
-nnoremap <space>x :NERDTreeToggle<CR>
-nnoremap <space>f :Files<CR>
-" Easier way to run files
-nnoremap <silent> <tab>m :w<CR>:!printf "\e[1;31m\t~~~~~~~~~~~~~new compile~~~~~~~~~~~~~\n\e[0m" && make && ./main<CR>
-nnoremap <silent> <tab>p :w<CR>:!printf "\e[1;31m\t~~~~~~~~~~~~~new compile~~~~~~~~~~~~~\n\e[0m" && python3 %
-nnoremap <silent> <SPACE><SPACE> zz
-" Moves screen down, up 1
-nnoremap <c-d> <c-u>
-nnoremap <c-f> <c-d>
 nnoremap <silent> <c-g> :noh<CR>
 " First and Last Character of line
-nnoremap z ^
-nnoremap Z g_
 nnoremap gm `
 " to be able to search for highlighted words
 vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
-" To resize window
-nnoremap <silent> <Tab>- :resize -5<CR>
-nnoremap <silent> <Tab>= :resize +5<CR>
-nnoremap <silent> - :vertical resize -5<CR>
-nnoremap <silent> = :vertical resize +5<CR>
 
 " REPLACE MODE
 let &t_SR = "\e[0 q"
@@ -97,11 +67,5 @@ let g:netrw_special_syntax=1
 let g:netrw_bufsettings = 'set rnu'
 let NERDTreeShowLineNumbers=1
 autocmd FileType nerdtree setlocal relativenumber
-let g:fzf_buffers_jump = 1
-command! -bang -nargs=? -complete=dir Files
-            \ call fzf#vim#files(<q-args>, {'options': ['--layout=reverse', '--info=inline', '--preview', 'cat {}']}, <bang>0)
-let g:fzf_command_prefix = 'Fzf'
-let g:autoformat_retab = 0
-let g:fuf_file_exclude = '\v\~$|\.o$|\.exe$|\.bak$|\.swp$|\.class$'
 set path+=**
 set wildignore+=**/node_modules/** 
